@@ -3,7 +3,7 @@ import { StyledParagraph } from "../../../styles/typography";
 import { ForwardedRef, forwardRef, InputHTMLAttributes } from "react";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  id: string;
+  id: "name" | "password" | "email" | "confirmPassword" | "login" | "senha";
   label: string;
 }
 
@@ -16,7 +16,7 @@ const Input = forwardRef(
       <div>
         <StyledInputContainer>
           <input id={id} ref={ref} {...rest} />
-          <label htmlFor={id}>{label}</label>
+          <label>{label}</label>
         </StyledInputContainer>
         <StyledParagraph fontColor="red">{}</StyledParagraph>
       </div>
