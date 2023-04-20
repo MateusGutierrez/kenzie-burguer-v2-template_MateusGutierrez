@@ -39,7 +39,8 @@ export const LoginForm = () => {
         type="password"
       />
 
-      {/* <Input2/> */}
+      {/* <Input2 label="E-mail" id="login"type="email" errors={errors} register={register}/>
+      <Input2 label="Senha" id="senha"type="password" errors={errors} register={register}/> */}
 
       <StyledButton $buttonSize="default" $buttonStyle="green" type="submit">
         Entrar
