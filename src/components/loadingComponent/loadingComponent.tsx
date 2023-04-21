@@ -9,7 +9,7 @@ export const LoadingComponent = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 5000);
+    }, 6000);
   }, []);
   return (
     <StyledLoading>
@@ -22,7 +22,7 @@ export const LoadingComponent = () => {
           data-testid="loader"
         />
       ) : (
-        <p></p>
+        <p>Por favor, Recarregue a página</p>
       )}
     </StyledLoading>
   );
