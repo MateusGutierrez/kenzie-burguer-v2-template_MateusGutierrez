@@ -9,7 +9,7 @@ export const LoadingComponent = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    }, 6000);
+    }, 5000);
   }, []);
   return (
     <StyledLoading>

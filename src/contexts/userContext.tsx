@@ -99,11 +99,9 @@ export const UserProvider = ({ children }: IUserContextProps) => {
 
   const userLogout = () => {
     toast.success("Saiu!", { autoClose: 1500 });
-    localStorage.removeItem("@TOKEN");
-    localStorage.removeItem("@USERID");
-    localStorage.removeItem("@CARTLIST");
-    setUser(null);
     setTimeout(() => {
+      localStorage.clear();
+      setUser(null);
       navigate("/");
     }, 1500);
   };
