@@ -1,51 +1,50 @@
 import { useForm } from "react-hook-form";
-import { LoginSchema } from "../../../schemas/loginSchema";
+import { LoginSchema, TLoginFormValue } from "../../../schemas/loginSchema";
 import { StyledButton } from "../../../styles/button";
 import { StyledForm } from "../../../styles/form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { UserContext } from "../../../contexts/userContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Input from "../Input";
-import Input2 from "../Input2";
-export interface ILoginFormData {
-  email: string;
-  password: string;
-}
 
 export const LoginForm = () => {
   const { loginSubmit } = useContext(UserContext);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<ILoginFormData>({
+  } = useForm<TLoginFormValue>({
     resolver: zodResolver(LoginSchema),
   });
 
-  const submit = (data: ILoginFormData) => {
-    console.log(data);
+  const submit = (data: TLoginFormValue) => {
     loginSubmit(data);
   };
 
   return (
     <StyledForm onSubmit={handleSubmit(submit)}>
-      <Input id="login" label="E-mail" {...register("email")} type="email" />
+      <Input
+        id="login"
+        label="E-mail"
+        {...register("email")}
+        type="email"
+        errors={errors.email?.message}
+      />
       <Input
         id="senha"
         label="Senha"
         {...register("password")}
+        errors={errors.password?.message}
         type="password"
       />
-
-      {/* <Input2 label="E-mail" id="login"type="email" errors={errors} register={register}/>
-      <Input2 label="Senha" id="senha"type="password" errors={errors} register={register}/> */}
 
       <StyledButton $buttonSize="default" $buttonStyle="green" type="submit">
         Entrar
       </StyledButton>
-      <ToastContainer theme="dark" />
+      <ToastContainer theme="light" />
     </StyledForm>
   );
 };
